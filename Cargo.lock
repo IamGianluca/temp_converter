@@ -71,7 +71,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "temp_conveter"
+name = "temp_converter"
 version = "0.1.0"
 dependencies = [
  "libmath",
