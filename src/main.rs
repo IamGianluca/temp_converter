@@ -4,7 +4,7 @@ use math::round;
 fn main() {
     println!("Hello, world!");
 
-    let mut f_temp = String::new(); // reaD_line() read input as strings
+    let mut f_temp = String::new();
 
     println!("Please enter temperature in Fahrenheit");
     io::stdin()
