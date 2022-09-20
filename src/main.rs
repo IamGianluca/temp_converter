@@ -1,21 +1,26 @@
-use std::io;
 use math::round;
+use std::io;
+use std::io::Write;
 
 fn main() {
-    println!("Hello, world!");
+    loop {
+        print!("Please enter temperature in Fahrenheit: ");
+        io::stdout().flush().unwrap();
 
-    let mut f_temp = String::new();
+        let mut f_temp = String::new();
+        io::stdin()
+            .read_line(&mut f_temp)
+            .expect("Failed to read line");
 
-    println!("Please enter temperature in Fahrenheit");
-    io::stdin()
-        .read_line(&mut f_temp)
-        .expect("Error");
+        let f_temp: f64 = match f_temp.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Please insert a valid number\n");
+                continue;
+            }
+        };
 
-    let f_temp: f64 = f_temp
-        .trim()
-        .parse()
-        .expect("Something went wrong");
-
-    let c_temp = round::half_away_from_zero((f_temp - 32.) / 1.8, 2);
-    println!("The temperature in Celsius is {c_temp}");
+        let c_temp = round::half_away_from_zero((f_temp - 32.) / 1.8, 2);
+        println!("The temperature in Celsius is {c_temp}\n");
+    }
 }
